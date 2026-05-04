@@ -1,4 +1,4 @@
-package com.example.loadout.model.lift.dao
+package com.example.loadout.model.lift.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
