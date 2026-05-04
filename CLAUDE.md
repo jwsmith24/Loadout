@@ -35,7 +35,7 @@ This is a greenfield Android app using **Kotlin + Jetpack Compose + Material 3**
 - Single `Activity` entry point (`MainActivity`)
 - Compose Navigation for screen routing
 - ViewModel + state hoisting for UI state
-- Room for local persistence (not yet added)
+- Room for local persistence (data layer complete — entities, DAOs, `AppDatabase` in `model/lift/db/`)
 
 **Domain — Tactical Barbell Fighter Protocol:**
 - Users create a 6-week `TrainingBlock` by selecting an exercise cluster and entering current 1RMs
@@ -46,5 +46,7 @@ This is a greenfield Android app using **Kotlin + Jetpack Compose + Material 3**
 **Exercise cluster (TB Fighter Protocol):** Overhead Press, Front Squat, Pullups, + optional Deadlift — 2 sessions per week, same cluster each session.
 
 **Dependency versions** are managed centrally in `gradle/libs.versions.toml` (version catalog). Add new dependencies there, not inline in `build.gradle.kts`.
+
+**Room must stay at 2.7.0+** — 2.6.x has a KSP2 bug that crashes on `suspend fun update(): Unit` in DAOs (`unexpected jvm signature V`).
 
 **Min SDK 33**, target/compile SDK 36, Java 11, Kotlin 2.0.21.
