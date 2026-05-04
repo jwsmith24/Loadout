@@ -2,6 +2,27 @@
 
 ## 2026-05-03 — Data layer
 
+### Starting point — data plan & user flows
+
+**TB Fighter Protocol:**
+- 2 sessions/week, same exercise cluster each session
+- Sets auto-regulated (3–5), reps based on %1RM for the week
+- 6-week training block
+
+**User flows:**
+- *Build a block:* select cluster → input current 1RMs → app generates 6-week block
+- *Log a lift:* select next lift from block → enter actual weights/sets → repeat or finish
+
+**Initial data plan (pre-implementation):**
+- `TrainingBlock` — id, startDate
+- `OneRepMax` — id, exercise (Enum), weight, recordedAt
+- `Session` — id, block (FK), date, weekNumber
+- `LiftLog` — id, exercise (Enum), targetWeight, targetReps, actualWeight?, actualReps?, setsCompleted, session (FK)
+- `Bodyweight` — deferred
+- Running — TBD
+
+**What changed during implementation:** `Session.block` and `LiftLog.session` became flat Int FKs (Room can't store nested objects). `OneRepMax` gained `recordedAt` to support history tracking. `Exercise` stayed an enum (not a DB table) with a TypeConverter.
+
 ### Summary
 Built the full Room data layer for the lifting domain from scratch. Added KSP and Room to the build via `libs.versions.toml` (version catalog), then created four entities (`TrainingBlock`, `OneRepMax`, `Session`, `LiftLog`) with foreign keys and cascade deletes. Wrote a DAO per entity with `Flow`-based observable queries and `suspend` writes, a `Converters` class for `Instant` and `Exercise` type conversion, and `AppDatabase` as the single database entrypoint. Topped it off with a `LiftingRepository` that exposes a clean API to the rest of the app and hides all DAO details.
 

@@ -53,5 +53,5 @@ This is a greenfield Android app using **Kotlin + Jetpack Compose + Material 3**
 
 ## Rules
 
-Anytime there is a significant learning, key decision made, architecture pattern or design pattern used, update JOURNAL.md [link](./JOURNAL.md) with a concise entry
+Anytime there is a significant learning, key decision made, architecture pattern or design pattern used, update JOURNAL.md [link](docs/JOURNAL.md) with a concise entry
 Each session/day should have an overall summary of what we did for context. Follow existing conventions in the doc.
