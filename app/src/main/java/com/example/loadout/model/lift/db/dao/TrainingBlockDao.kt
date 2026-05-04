@@ -12,12 +12,16 @@ interface TrainingBlockDao {
     @Insert
     suspend fun insert(trainingBlock: TrainingBlock): Long
 
-    @Query("SELECT * FROM training_block")
+    @Query("""
+        SELECT * FROM training_block
+        ORDER BY startDate DESC
+    """)
     fun getAll(): Flow<List<TrainingBlock>>
 
     @Query("""
         SELECT * FROM training_block
-        WHERE id = :id
+        ORDER BY startDate DESC
+        LIMIT 1
     """)
-    fun getById(id: Int): Flow<TrainingBlock?>
+    fun getLatest(): Flow<TrainingBlock?>
 }
