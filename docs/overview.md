@@ -37,12 +37,17 @@ flowchart TD
 
 `OneRepMax`
 - id: Int
-- exercise: Enum
+- exercise: Exercise
 - weight: Double
+- recordedAt: Instant
+
+`Exercise`
+- id: Int
+- name: String
 
 `Session`
 - id: Int
-- blockId: Int (FK → TrainingBlock.id)
+- block: TrainingBlock
 - date: Instant
 - weekNumber: Int (used for weight / reps)
 
@@ -54,7 +59,7 @@ flowchart TD
 - actualWeight: Double? (default null)
 - actualReps: Int? (default null)
 - setsCompleted: Int (3, 4, or 5)
-- sessionId: Int (FK → Session.id)
+- session: Session
 
 
 ### User
