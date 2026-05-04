@@ -50,3 +50,8 @@ This is a greenfield Android app using **Kotlin + Jetpack Compose + Material 3**
 **Room must stay at 2.7.0+** — 2.6.x has a KSP2 bug that crashes on `suspend fun update(): Unit` in DAOs (`unexpected jvm signature V`).
 
 **Min SDK 33**, target/compile SDK 36, Java 11, Kotlin 2.0.21.
+
+## Rules
+
+Anytime there is a significant learning, key decision made, architecture pattern or design pattern used, update JOURNAL.md [link](./JOURNAL.md) with a concise entry
+Each session/day should have an overall summary of what we did for context. Follow existing conventions in the doc.
